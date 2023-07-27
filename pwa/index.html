@@ -21,5 +21,22 @@
     <div class="link">
         <a href="pagina2.html">Ir para a página 2</a>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            if ('serviceWorker' in navigator) {
+                console.log('has serviceworker');
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('serviceWorker.js')
+                    .then((registration) => {
+                        console.log('Service worker registered.', registration);
+                    });
+                });
+            }
+            else {
+                console.log("Your browser not supports serviceWorkers");
+            }
+        });
+    </script>
 </body>
 </html>
